@@ -1,4 +1,4 @@
-# PiTrac Range Session – Shot Tracking & Image Analysis
+# PiTrac Range Session – Shot & Image Viewer
 
 This project processes Pitrac data by combining log files, images trough an automated matching logic to create a fully interactive analysis tool.  
 It loads shot results from the log file, matches it with captured images, exports the combined dataset as a .pkl database, and provides an interactive dashboard for exploring each shot in detail.
