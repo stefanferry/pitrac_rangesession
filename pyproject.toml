@@ -1,0 +1,22 @@
+[project]
+name = "pitrac-rangesession"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "stefanferry",email = "stefanfaehrmann@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pandas (>=3.0.0,<4.0.0)",
+    "plotly (>=6.5.2,<7.0.0)",
+    "dash (>=4.0.0,<5.0.0)",
+    "pillow (>=12.1.1,<13.0.0)",
+    "dash-extensions (>=2.0.4,<3.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
