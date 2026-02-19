@@ -2,7 +2,7 @@ from src.log_parser import parse_logfile
 from src.image_loader import load_images
 from src.matcher import match_all_images_for_shots
 from src.plotting import interactive_plot
-from excel_export import export_pkl_to_excel
+from src.excel_export import export_pkl_to_excel
 
 
 import pandas as pd
