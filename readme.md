@@ -1,6 +1,7 @@
 # PiTrac Range Session – Shot & Image Viewer
+DISCLAIMER: This project relies heavily on LLM generated code and lacks so far sufficient testing and verification. Please verifiy data quality by randomly comparing the raw log and image files to the dasboard visualisation.
 
-This project processes Pitrac data by combining log files, images trough an automated matching logic to create a fully interactive analysis tool.  
+This project processes PiTrac shot data by combining the log file and images trough a timestamp matching logic to create a interactive analysis tool.  
 It loads shot results from the log file, matches it with captured images, exports the combined dataset as a .pkl database, and provides an interactive dashboard for exploring each shot in detail.
 
 ---
@@ -11,7 +12,7 @@ It loads shot results from the log file, matches it with captured images, export
 Reads raw `.log` files containing shot timestamps, ball data, and CSV‑based metrics.
 Can be drawn from: 
 ```bash
-/home/pitracsf1/.pitrac/logs
+/home/user/.pitrac/logs
 ```
 
 
@@ -41,32 +42,34 @@ A browser‑based dashboard that includes:
 
 ---
 
-## 📦 Project Structure
 
-project/ 
-│ 
-├── src/ 
-│   ├── log_parser.py 
-│   ├── image_loader.py 
-│   ├── matcher.py 
-│   └── plotting.py  
+
+## 📦 Project Structure
+```
+pitrac_rangesession/
+│
+├── src/
+│   ├── log_parser.py
+│   ├── image_loader.py
+│   ├── matcher.py
+│   └── plotting.py
 ├── data/ 
-│   ├── test_*.log 
-│   └── images/ 
+│   ├── test_*.log #drop your logfile here
+│   └── images/ #drop your images here
 ├── output/ 
-│   └── data.pkl 
+│   └── data.pkl  #will be created after you run main.py
 ├── exports/ 
-│   └── data.xlsx 
+│   └── data.xlsx  #will be created after you run main.py
 ├── .venv/ 
 ├── excel_export.py 
 ├── .gitignore
 ├── main.py 
 ├── pyproject.toml
 └── README.md
-
+```
 ---
 
-## 🧠 How It Works
+## 🧠 How It Works (main.py)
 
 ### 1. Parse Logfile  
 Extracts shot timestamps, ball speed, club speed, spin, and other metrics.
@@ -81,14 +84,13 @@ Each shot is matched with the closest images based on timestamp proximity.
 The merged dataset is stored as `output/data.pkl`.
 
 ### 5. Optional Excel Export  
-The PKL is exported to `exports/data.xlsx`.
+The PKL is exported to `exports/data.xlsx`y for easy verification
 
 ### 6. Interactive Plot  
 A Dash application opens in your browser and allows:
-- exploring shots visually  
+- exploring shots visually by hovering over datapoints in the diagram
 - comparing metrics  
 - viewing matched images  
-- navigating with keyboard arrows  
 
 ---
 
