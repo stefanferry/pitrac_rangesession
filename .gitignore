@@ -18,14 +18,26 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Project-specific
+# Ignore productive output
 output/
 exports/
-data/images/
+
+# Ignore real data
+data/*
+!data/example/
+
+# Allow example files inside example folder
+!data/example/*.log
+!data/example/*.png
+!data/example/images/
+!data/example/images/*.png
+
+# Ignore all other logs, pngs, pkl, xlsx
 *.log
 *.png
 *.pkl
 *.xlsx
+
 
 # Dash cache
 *.cache/

@@ -3,14 +3,25 @@ from src.image_loader import load_images
 from src.matcher import match_all_images_for_shots
 from src.plotting import interactive_plot
 from src.excel_export import export_pkl_to_excel
-
-
+import os
 import pandas as pd
 
+def ensure_directories():
+    os.makedirs("output", exist_ok=True)
+    os.makedirs("exports", exist_ok=True)
+
 def main():
-    log_path = "data/test_2026-02-14_17-15-51.0.log"
+    ensure_directories()
+    
+    log_path = "data/test_2026-02-14_17-15-51.0.log" #enter your log file here
     image_dir = "data/images"
     pkl_path = "output/data.pkl"
+    excel_path = "exports/data.xlsx"
+
+    """log_path = "data/example/sample.log"
+    image_dir = "data/example/images"
+    pkl_path = "output/data.pkl"
+    excel_path = "exports/data.xlsx" """
 
     # 1) Read log (alle Shots + Timestamps + Ball-Daten + CSV-Daten)
     log_df = parse_logfile(log_path)
@@ -25,7 +36,7 @@ def main():
     merged_df.to_pickle(pkl_path)
 
     # 5) excel export if wanted
-    export_path = export_pkl_to_excel(pkl_path, "exports/data.xlsx")
+    export_path = export_pkl_to_excel(pkl_path, excel_path)
     print("Excel saved in:", export_path)
 
     # 6) Interactive Plot
