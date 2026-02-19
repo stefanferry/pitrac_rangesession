@@ -1,0 +1,235 @@
+[2026-02-14 18:08:18.466497] (0x00007fff237e18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:08:19.271517] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:08:20.945641] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:08:21.838401] (0x00007fffbc15cbe0) [warning] ONNX detection failed - no balls found
+[2026-02-14 18:08:22.562344] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:08:22.562488] (0x00007fff237e18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:08:25.794321] (0x00007fff217a18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:08:25.794457] (0x00007fff217a18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:08:27.363179] (0x00007fffbc15cbe0) [info] =============== Ball Stabilized - Let's Play Golf!  (Waiting for hit)
+
+[2026-02-14 18:08:32.870102] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (96, 88) align (16, 2)
+	crop[0] [ X [off 0 len 96] Y [off 0 len 88] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 96] Y [off 0 len 88] ]
+	output_image_size[1] (96, 88) align max (128, 2) min (32, 2)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:08:32.870214] (0x00007fff237e18e0) [info] tile_pipeline: Made 1x1 tiles
+[2026-02-14 18:08:35.321343] (0x00007fffbc15cbe0) [info] ============= BALL HIT ===============
+[2026-02-14 18:08:35.324702] (0x00007fffbc15cbe0) [info] Grayscale conversion completed in 872us
+[2026-02-14 18:08:36.772441] (0x00007fffbc15cbe0) [info] In driving mode.
+[2026-02-14 18:08:36.772576] (0x00007fffbc15cbe0) [info] Teed-up Ball:[Ball No.    0  (x,y)=( 232,624 ), r=52.00  | Circle[(x,y)=(231.75194,623.62665), r=52.0  ] | cal=true   | DistFromLens=0.790m | CalFocLen=-1.000 | TBD]
+        [BallAngles(x,y)=(0.000 ,0.000 )]
+        [DistDeltasBall(x,y,z)=(0.000 ,0.000 ,0.000 )  (all inches)
+        DistDeltasCam(x,y,z)=(0.000 ,0.000 ,0.000 )
+        DistCam(x,y,z)=(-0.523,-0.241,0.541 )
+        [AnglesCam(x,y)=(-43.991,-24.037)]
+        avgC:[ 72.33,  72.40,  72.29] stdC:[ 17.53,  17.52,  17.54]
+
+[2026-02-14 18:08:37.938971] (0x00007fffbc15cbe0) [info] Time between center-most images: 2.200000ms
+[2026-02-14 18:08:37.943064] (0x00007fffbc15cbe0) [info] 'First' Ball After ComputeBallDeltas:[Ball No.    0  (x,y)=( 753,695 ), r=75.71  | Circle[(x,y)=(753.11444,695.2126), r=75.7  ] | cal=false  | DistFromLens=0.533m | CalFocLen=-1.000 | TBD]
+        [BallAngles(x,y)=(0.000 ,0.000 )]
+        [DistDeltasBall(x,y,z)=(0.000 ,0.000 ,0.000 )  (all inches)
+        DistDeltasCam(x,y,z)=(0.000 ,0.000 ,0.000 )
+        DistCam(x,y,z)=(0.017 ,0.015 ,0.533 )
+        [AnglesCam(x,y)=(1.786 ,1.618 )]
+        avgC:[108.10, 108.16, 108.06] stdC:[ 24.52,  24.51,  24.53]
+
+[2026-02-14 18:08:39.672160] (0x00007fffbc15cbe0) [info] Spin detection completed in 1728ms
+[2026-02-14 18:08:39.677750] (0x00007fffbc15cbe0) [info] BALL_HIT_CSV, 69, (carry - NA), (Total - NA), (Side Dest - NA), (Smash Factor - NA), (Club Speed - NA), 126.394141, 4944, -333, 8.469386, 2.515766, (Descent Angle-NA), (Apex-NA), (Flight Time-NA), (Type-NA)
+[2026-02-14 18:08:40.450781] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:08:40.450910] (0x00007fff237e18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:08:41.248642] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:08:43.093206] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:08:44.016118] (0x00007fffbc15cbe0) [warning] ONNX detection failed - no balls found
+[2026-02-14 18:08:44.737601] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:08:44.737729] (0x00007fff237e18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:08:45.531895] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:08:47.193769] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:08:48.085008] (0x00007fffbc15cbe0) [warning] ONNX detection failed - no balls found
+[2026-02-14 18:08:48.800724] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:08:48.800855] (0x00007fff237e18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:08:52.034348] (0x00007fff22fd18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:08:52.034484] (0x00007fff22fd18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:08:53.610042] (0x00007fffbc15cbe0) [info] =============== Ball Stabilized - Let's Play Golf!  (Waiting for hit)
+
+[2026-02-14 18:08:59.110626] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (96, 88) align (16, 2)
+	crop[0] [ X [off 0 len 96] Y [off 0 len 88] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 96] Y [off 0 len 88] ]
+	output_image_size[1] (96, 88) align max (128, 2) min (32, 2)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:08:59.110747] (0x00007fff237e18e0) [info] tile_pipeline: Made 1x1 tiles
+[2026-02-14 18:09:01.698329] (0x00007fffbc15cbe0) [info] ============= BALL HIT ===============
+[2026-02-14 18:09:01.701067] (0x00007fffbc15cbe0) [info] Grayscale conversion completed in 1023us
+[2026-02-14 18:09:03.156691] (0x00007fffbc15cbe0) [info] In driving mode.
+[2026-02-14 18:09:03.156846] (0x00007fffbc15cbe0) [info] Teed-up Ball:[Ball No.    0  (x,y)=( 218,626 ), r=52.61  | Circle[(x,y)=(217.7697,625.63544), r=52.6  ] | cal=true   | DistFromLens=0.781m | CalFocLen=-1.000 | TBD]
+        [BallAngles(x,y)=(0.000 ,0.000 )]
+        [DistDeltasBall(x,y,z)=(0.000 ,0.000 ,0.000 )  (all inches)
+        DistDeltasCam(x,y,z)=(0.000 ,0.000 ,0.000 )
+        DistCam(x,y,z)=(-0.520,-0.239,0.531 )
+        [AnglesCam(x,y)=(-44.381,-24.254)]
+        avgC:[ 58.09,  58.16,  58.05] stdC:[ 25.62,  25.61,  25.64]
+
+[2026-02-14 18:09:04.368719] (0x00007fffbc15cbe0) [warning] DetermineHandedness - balls vector was empty.Exiting function.
+[2026-02-14 18:09:04.368795] (0x00007fffbc15cbe0) [warning] Could not determine player handedness from shot.
+[2026-02-14 18:09:04.368813] (0x00007fffbc15cbe0) [error] Unable to find ANY ball exposures after ball hit.  Did ball move inadvertently?
+[2026-02-14 18:09:04.368846] (0x00007fffbc15cbe0) [error] GolfSim FSM could not ProcessReceivedCam2Image.
+[2026-02-14 18:09:04.463415] (0x00007fffbc15cbe0) [info] BALL_HIT_CSV, 70, (carry - Error), (Total - Error), (Side Dest - Error), (Smash Factor - Error), (Club Speed - Error), 0, 0, 0, 0, 0, (Descent Angle-Error), (Apex-Error), (Flight Time-Error), (Type-Error)
+[2026-02-14 18:09:05.121444] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:09:05.121644] (0x00007fff237e18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:09:05.957285] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:09:07.779789] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:09:08.698620] (0x00007fffbc15cbe0) [warning] ONNX detection failed - no balls found
+[2026-02-14 18:09:09.440679] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:09:09.440808] (0x00007fff237e18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:09:10.231069] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:09:11.893333] (0x00007fffbc15cbe0) [warning] ONNX Runtime detection failed, falling back to OpenCV DNN
+[2026-02-14 18:09:12.781190] (0x00007fffbc15cbe0) [warning] ONNX detection failed - no balls found
+[2026-02-14 18:09:13.510348] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:09:13.510491] (0x00007fff237e18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:09:16.738308] (0x00007fff217a18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:09:16.738443] (0x00007fff217a18e0) [info] tile_pipeline: Made 3x1 tiles
+[2026-02-14 18:09:18.304226] (0x00007fffbc15cbe0) [info] =============== Ball Stabilized - Let's Play Golf!  (Waiting for hit)
+
+[2026-02-14 18:09:23.815606] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (96, 88) align (16, 2)
+	crop[0] [ X [off 0 len 96] Y [off 0 len 88] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 96] Y [off 0 len 88] ]
+	output_image_size[1] (96, 88) align max (128, 2) min (32, 2)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
+[2026-02-14 18:09:23.815720] (0x00007fff237e18e0) [info] tile_pipeline: Made 1x1 tiles
+[2026-02-14 18:09:29.042465] (0x00007fffbc15cbe0) [info] ============= BALL HIT ===============
+[2026-02-14 18:09:29.046607] (0x00007fffbc15cbe0) [info] Grayscale conversion completed in 2093us
+[2026-02-14 18:09:30.506116] (0x00007fffbc15cbe0) [info] In driving mode.
+[2026-02-14 18:09:30.506262] (0x00007fffbc15cbe0) [info] Teed-up Ball:[Ball No.    0  (x,y)=( 227,621 ), r=51.32  | Circle[(x,y)=(227.47397,621.4826), r=51.3  ] | cal=true   | DistFromLens=0.801m | CalFocLen=-1.000 | TBD]
+        [BallAngles(x,y)=(0.000 ,0.000 )]
+        [DistDeltasBall(x,y,z)=(0.000 ,0.000 ,0.000 )  (all inches)
+        DistDeltasCam(x,y,z)=(0.000 ,0.000 ,0.000 )
+        DistCam(x,y,z)=(-0.531,-0.243,0.547 )
+        [AnglesCam(x,y)=(-44.130,-23.973)]
+        avgC:[ 66.94,  67.00,  66.90] stdC:[ 21.44,  21.43,  21.45]
+
+[2026-02-14 18:09:31.648803] (0x00007fffbc15cbe0) [info] Time between center-most images: 2.200000ms
+[2026-02-14 18:09:31.652378] (0x00007fffbc15cbe0) [info] 'First' Ball After ComputeBallDeltas:[Ball No.    0  (x,y)=( 724,667 ), r=74.09  | Circle[(x,y)=(724.37823,667.13226), r=74.1  ] | cal=false  | DistFromLens=0.545m | CalFocLen=-1.000 | TBD]
+        [BallAngles(x,y)=(0.000 ,0.000 )]
+        [DistDeltasBall(x,y,z)=(0.000 ,0.000 ,0.000 )  (all inches)
+        DistDeltasCam(x,y,z)=(0.000 ,0.000 ,0.000 )
+        DistCam(x,y,z)=(0.009 ,0.023 ,0.544 )
+        [AnglesCam(x,y)=(0.908 ,2.459 )]
+        avgC:[ 97.36,  97.41,  97.32] stdC:[ 36.59,  36.58,  36.59]
+
+[2026-02-14 18:09:33.351309] (0x00007fffbc15cbe0) [info] Spin detection completed in 1698ms
+[2026-02-14 18:09:33.362589] (0x00007fffbc15cbe0) [info] BALL_HIT_CSV, 71, (carry - NA), (Total - NA), (Side Dest - NA), (Smash Factor - NA), (Club Speed - NA), 123.109498, 4555, -1222, 9.536508, 3.191717, (Descent Angle-NA), (Apex-NA), (Flight Time-NA), (Type-NA)
+[2026-02-14 18:09:34.114805] (0x00007fff237e18e0) [info] tile_pipeline: TilingConfig:
+	input_image_size (1456, 1088) align (16, 2)
+	crop[0] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[0] (0, 0) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	crop[1] [ X [off 0 len 1456] Y [off 0 len 1088] ]
+	output_image_size[1] (1456, 1088) align max (64, 1) min (16, 1)
+	downscale_image_size (0, 0) downscale_factor (0, 0) resample_factor (0, 0)
+	enables resample 16 downscale 128
+	max_tile_size (640, 3072)
