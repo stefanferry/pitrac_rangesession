@@ -53,7 +53,10 @@ pitrac_rangesession/
 │   ├── image_loader.py
 │   ├── matcher.py
 │   └── plotting.py
-├── data/ 
+├── data/
+│   ├── example/ #minimal example if you have no data at hand
+│   │   ├── images/ #example images from three shots
+│   │   ├── sample.log # three shots from wich one was not detected
 │   ├── test_*.log #drop your logfile here
 │   └── images/ #drop your images here
 ├── output/ 
