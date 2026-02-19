@@ -3,7 +3,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.pkl
 
 # Virtual environments
 .venv/
@@ -25,19 +24,16 @@ exports/
 # Ignore real data
 data/*
 !data/example/
-
-# Allow example files inside example folder
+!data/example/**
+!data/example/images/**
 !data/example/*.log
 !data/example/*.png
-!data/example/images/
-!data/example/images/*.png
 
 # Ignore all other logs, pngs, pkl, xlsx
-*.log
-*.png
 *.pkl
 *.xlsx
-
+*.log
+*.png
 
 # Dash cache
 *.cache/
