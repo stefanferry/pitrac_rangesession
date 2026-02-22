@@ -6,7 +6,7 @@ It loads shot results from the log file, matches it with captured images, export
 
 ---
 
-## 🚀 Features
+## Features
 
 ### ✔ Logfile Parsing  
 Reads raw `.log` files containing shot timestamps, ball data, and CSV‑based metrics.
@@ -16,22 +16,22 @@ Can be drawn from:
 ```
 
 
-### ✔ Image Loading  
+### Image Loading  
 Loads all images from directory and extracts timestamps and metadata.
 Can be drawn from: 
 ```bash
 /home/user/LM_Shares/Images
 ```
 
-### ✔ Shot–Image Matching  
+### Shot–Image Matching  
 Automatically matches each shot with the closest images (within a 1‑minute window).
 
-### ✔ PKL + Excel Export  
+### PKL + Excel Export  
 Saves the merged dataset as:
 - a `.pkl` file for fast re‑loading  
 - an optional `.xlsx` export for external analysis and troubleshooting
 
-### ✔ Interactive Dash Plot  
+### Interactive Dash Plot  
 A browser‑based dashboard that includes:
 - scatter plot (configurable y-content vs. shot time-stamp)
 - hover‑based shot selection
@@ -44,7 +44,7 @@ A browser‑based dashboard that includes:
 
 
 
-## 📦 Project Structure
+## Project Structure
 ```
 pitrac_rangesession/
 │
@@ -72,7 +72,7 @@ pitrac_rangesession/
 ```
 ---
 
-## 🧠 How It Works (main.py)
+## How It Works (main.py)
 
 ### 1. Parse Logfile  
 Extracts shot timestamps, ball speed, club speed, spin, and other metrics.
@@ -97,7 +97,7 @@ A Dash application opens in your browser and allows:
 
 ---
 
-## ▶️ Running the Project
+## Running the Project
 
 Activate your virtual environment and run:
 
