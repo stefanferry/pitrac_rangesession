@@ -1,14 +1,20 @@
+# log_parser.py
 import re
 import pandas as pd
 
 # -----------------------------
-# Helper: Timestamp extrahieren
+# Timestamp extraction
 # -----------------------------
+TIMESTAMP_REGEX = re.compile(
+    r"\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+)\]"
+)
+
 def extract_timestamp(line):
-    m = re.match(r"\[(.*?)\]", line)
-    if m:
-        return pd.to_datetime(m.group(1))
-    return None
+    """Extracts timestamp from a log line or returns None"""
+    m = TIMESTAMP_REGEX.search(line)
+    if not m:
+        return None
+    return pd.to_datetime(m.group(1), errors="coerce")
 
 
 # -----------------------------
@@ -21,12 +27,13 @@ CSV_COLUMNS = [
 ]
 
 def parse_ball_hit_csv(line):
+    """Parse a BALL_HIT_CSV line into dict of columns"""
     raw = line.split("BALL_HIT_CSV,")[1].strip()
     parts = [p.strip() for p in raw.split(",")]
 
     cleaned = []
     for p in parts:
-        if "NA" in p:
+        if "NA" in p or "Error" in p:
             cleaned.append(None)
         else:
             p = p.replace("(", "").replace(")", "")
@@ -42,11 +49,10 @@ def parse_ball_hit_csv(line):
 
 
 # -----------------------------
-# Parser für Ball-Info-Blöcke
+# Ball Info Parser
 # -----------------------------
 def parse_ball_block(line, prefix, current):
-    """Extrahiert Ball No, Position, Radius, Circle, cal, DistFromLens, CalFocLen."""
-    
+    """Extract ball info like Ball No, position, radius, circle, cal, DistFromLens"""
     # Ball No, Position, Radius
     m = re.search(
         r"Ball No\.\s*(\d+).*?\(x,y\)=\(\s*([\d\.-]+),\s*([\d\.-]+)\s*\).*?r=([\d\.]+)",
@@ -85,93 +91,110 @@ def parse_ball_block(line, prefix, current):
 
 
 # -----------------------------
-# Hauptparser für BALL-HIT-Blöcke
+# Main robust log parser
 # -----------------------------
 def parse_logfile(path):
     results = []
     current = {}
+    current_lines = []
+    ts_last = None
+    shot_id = -1
 
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, "r", encoding="utf-8", errors="replace") as f:
         for line in f:
+            line = line.rstrip("\n")
             ts = extract_timestamp(line)
+            if ts is not None:
+                ts_last = ts  # remember last valid timestamp
 
-            # Start eines neuen Ball-Hit-Blocks
+            # Start new shot block
             if "BALL HIT" in line:
                 current = {}
-                current["timestamp_hit_start"] = ts
+                current_lines = [line]
+                ts_last = ts_last  # keep timestamp for BALL HIT
+                current["timestamp_hit_start"] = ts_last
+                shot_id += 1
+                current["shot_id"] = shot_id
+            else:
+                # Append line to current_lines if in a shot
+                if current_lines is not None:
+                    current_lines.append(line)
 
-            # Grayscale
-            if "Grayscale conversion completed" in line:
-                current["timestamp_gray_done"] = ts
+            if current:
+                # Teed-up Ball
+                if "Teed-up Ball:" in line:
+                    current["timestamp_teed_up_ball"] = ts_last
+                    parse_ball_block(line, "teed", current)
 
-            # Driving mode
-            if "In driving mode" in line:
-                current["timestamp_driving_mode"] = ts
+                # First Ball After ComputeBallDeltas
+                if "First' Ball After ComputeBallDeltas" in line or \
+                   "First Ball After ComputeBallDeltas" in line:
+                    current["timestamp_first_ball"] = ts_last
+                    parse_ball_block(line, "first", current)
 
-            # Teed-up Ball
-            if "Teed-up Ball:" in line:
-                current["timestamp_teed_up_ball"] = ts
-                parse_ball_block(line, "teed", current)
+                # Grayscale
+                if "Grayscale conversion completed" in line:
+                    current["timestamp_gray_done"] = ts_last
 
-            # First Ball After ComputeBallDeltas
-            if "First' Ball After ComputeBallDeltas" in line or \
-               "First Ball After ComputeBallDeltas" in line:
-                current["timestamp_first_ball"] = ts
-                parse_ball_block(line, "first", current)
+                # Driving mode
+                if "In driving mode" in line:
+                    current["timestamp_driving_mode"] = ts_last
 
-            # Time between center-most images
-            if "Time between center-most images" in line:
-                m = re.search(r"Time between center-most images:\s*([\d\.]+)ms", line)
-                if m:
-                    current["time_between_center_images_ms"] = float(m.group(1))
+                # Time between center-most images
+                if "Time between center-most images" in line:
+                    m = re.search(r"Time between center-most images:\s*([\d\.]+)ms", line)
+                    if m:
+                        current["time_between_center_images_ms"] = float(m.group(1))
 
-            # BallAngles
-            if "BallAngles" in line:
-                m = re.search(r"BallAngles\(x,y\)=\(([\d\.-]+)\s*,\s*([\d\.-]+)\)", line)
-                if m:
-                    current["ball_angle_x"] = float(m.group(1))
-                    current["ball_angle_y"] = float(m.group(2))
+                # BallAngles
+                if "BallAngles" in line:
+                    m = re.search(r"BallAngles\(x,y\)=\(([\d\.-]+)\s*,\s*([\d\.-]+)\)", line)
+                    if m:
+                        current["ball_angle_x"] = float(m.group(1))
+                        current["ball_angle_y"] = float(m.group(2))
 
-            # DistCam
-            if "DistCam" in line:
-                m = re.search(r"DistCam\(x,y,z\)=\(([\d\.-]+),([\d\.-]+),([\d\.-]+)\)", line)
-                if m:
-                    current["distcam_x"] = float(m.group(1))
-                    current["distcam_y"] = float(m.group(2))
-                    current["distcam_z"] = float(m.group(3))
+                # DistCam
+                if "DistCam" in line:
+                    m = re.search(r"DistCam\(x,y,z\)=\(([\d\.-]+),([\d\.-]+),([\d\.-]+)\)", line)
+                    if m:
+                        current["distcam_x"] = float(m.group(1))
+                        current["distcam_y"] = float(m.group(2))
+                        current["distcam_z"] = float(m.group(3))
 
-            # AnglesCam
-            if "AnglesCam" in line:
-                m = re.search(r"AnglesCam\(x,y\)=\(([\d\.-]+),([\d\.-]+)\)", line)
-                if m:
-                    current["anglescam_x"] = float(m.group(1))
-                    current["anglescam_y"] = float(m.group(2))
+                # AnglesCam
+                if "AnglesCam" in line:
+                    m = re.search(r"AnglesCam\(x,y\)=\(([\d\.-]+),([\d\.-]+)\)", line)
+                    if m:
+                        current["anglescam_x"] = float(m.group(1))
+                        current["anglescam_y"] = float(m.group(2))
 
-            # avgC
-            if "avgC" in line:
-                m = re.search(r"avgC:\[\s*([\d\.-]+),\s*([\d\.-]+),\s*([\d\.-]+)\]", line)
-                if m:
-                    current["avgC_r"] = float(m.group(1))
-                    current["avgC_g"] = float(m.group(2))
-                    current["avgC_b"] = float(m.group(3))
+                # avgC
+                if "avgC" in line:
+                    m = re.search(r"avgC:\[\s*([\d\.-]+),\s*([\d\.-]+),\s*([\d\.-]+)\]", line)
+                    if m:
+                        current["avgC_r"] = float(m.group(1))
+                        current["avgC_g"] = float(m.group(2))
+                        current["avgC_b"] = float(m.group(3))
 
-            # stdC
-            if "stdC" in line:
-                m = re.search(r"stdC:\[\s*([\d\.-]+),\s*([\d\.-]+),\s*([\d\.-]+)\]", line)
-                if m:
-                    current["stdC_r"] = float(m.group(1))
-                    current["stdC_g"] = float(m.group(2))
-                    current["stdC_b"] = float(m.group(3))
+                # stdC
+                if "stdC" in line:
+                    m = re.search(r"stdC:\[\s*([\d\.-]+),\s*([\d\.-]+),\s*([\d\.-]+)\]", line)
+                    if m:
+                        current["stdC_r"] = float(m.group(1))
+                        current["stdC_g"] = float(m.group(2))
+                        current["stdC_b"] = float(m.group(3))
 
-            # Spin detection
-            if "Spin detection completed" in line:
-                current["timestamp_spin_done"] = ts
+                # Spin detection
+                if "Spin detection completed" in line:
+                    current["timestamp_spin_done"] = ts_last
 
-            # BALL_HIT_CSV → Block fertig
-            if "BALL_HIT_CSV" in line:
-                current["timestamp_ball_hit_csv"] = ts
-                current.update(parse_ball_hit_csv(line))
-                results.append(current)
-                current = {}
+                # BALL_HIT_CSV → end of shot block
+                if "BALL_HIT_CSV" in line:
+                    current["timestamp_ball_hit_csv"] = ts_last
+                    current.update(parse_ball_hit_csv(line))
+                    current["lines"] = current_lines.copy()
+                    results.append(current)
+                    current = {}
+                    current_lines = []
 
     return pd.DataFrame(results)

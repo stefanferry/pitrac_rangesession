@@ -13,7 +13,7 @@ def ensure_directories():
 def main():
     ensure_directories()
     
-    log_path = "data/test_2026-02-14_17-15-51.0.log" #enter your log file here
+    log_path = "data/pitrac.log" #enter your log file here
     image_dir = "data/images"
     pkl_path = "output/data.pkl"
     excel_path = "exports/data.xlsx"
@@ -43,7 +43,8 @@ def main():
     #interactive_plot(merged_df, y_columns=["ball_speed", "back_spin"])
     interactive_plot(merged_df, y_axes={
         "ball_speed": 1,
-        "time_between_center_images_ms": 2
+        "time_between_center_images_ms": 2,
+        "back_spin": 2
         })
 
 
